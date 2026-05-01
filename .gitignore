@@ -1,0 +1,16 @@
+target/
+*.class
+*.log
+*.jar
+*.war
+*.ear
+.mvn/
+*.iml
+.idea/
+.settings/
+.classpath
+.project
+.env
+application-local.properties
+application-prod.properties
+HELP.md
