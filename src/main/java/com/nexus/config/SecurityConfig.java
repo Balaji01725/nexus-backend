@@ -60,10 +60,16 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration cfg = new CorsConfiguration();
-        // Split comma-separated origins from config
-        List<String> origins = Arrays.asList(corsOrigins.split(","));
-        cfg.setAllowedOriginPatterns(origins);
-        cfg.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
+
+        // Allow all Vercel preview URLs + your main URL
+        cfg.setAllowedOriginPatterns(List.of(
+                "http://localhost:5173",
+                "http://localhost:3000",
+                "https://nexus-frontend-ashy.vercel.app",
+                "https://*.vercel.app"
+        ));
+
+        cfg.setAllowedMethods(List.of("GET","POST","PUT","DELETE","OPTIONS","PATCH"));
         cfg.setAllowedHeaders(List.of("*"));
         cfg.setAllowCredentials(true);
         cfg.setMaxAge(3600L);
